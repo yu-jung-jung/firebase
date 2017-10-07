@@ -21,11 +21,9 @@
 	var tDestination = $("#destination-input").val().trim();
 	var	tTime = moment($("#firsttime-input").val().trim(), "HH:mm").format("X");
 	var tFrequency = $("#frequency-input").val();
+	
 
-
-		
-
-// object for holding data
+	// object for holding data
 	var newTrain = {
 		name: tName,
 		destination: tDestination,
@@ -36,11 +34,10 @@
 // upload data to DB
 	database.ref().push(newTrain);
 
-// Logs everything to console
-  console.log(tName.name);
-  console.log(tDestination.destination);
-  console.log(tTime.time);
-  console.log(tFrequency.frequency);
+  // console.log(tName.name);
+  // console.log(tDestination.destination);
+  // console.log(tTime.time);
+  // console.log(tFrequency.frequency);
 
 // alert
 	alert("Train has been successfully added!");
@@ -60,23 +57,23 @@
 		var tDestination = childSnapshot.val().destination;
 		var tTime = childSnapshot.val().time;
 		var tFrequency = childSnapshot.val().frequency;
-	// WHY
-	console.log(tName);
-	console.log(tDestination);
-	console.log(tTime);
-	console.log(tFrequency);
+	
 
 // calculate next arrival
 
 	var now = new Date(Date.now());
 	var nowFormat = moment(now).format("HH:mm");
 	
+	console.log(nowFormat)
 
 	var tNext = nowFormat + tFrequency
 
 // calculate minutes away
 	
 	var tRemain = nowFormat % tFrequency
+
+	console.log(tNext)
+	console.log(tRemain)
 
 // add data to table field
 
