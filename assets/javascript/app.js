@@ -56,17 +56,17 @@
 		var tName = childSnapshot.val().name;
 		var tDestination = childSnapshot.val().destination;
 		var tTime = childSnapshot.val().time;
-		var tFrequency = childSnapshot.val().frequency;
+		var tFrequency = Number(childSnapshot.val().frequency);
 	
 
 // calculate next arrival
 
 	var now = new Date(Date.now());
-	var nowFormat = moment(now).format("HH:mm");
+	var nowFormat = Number(moment(now).format("HH:mm"));
 	
 	console.log(nowFormat)
 
-	var tNext = nowFormat + tFrequency
+	var tNext = nowFormat + tFrequency;
 
 // calculate minutes away
 	
@@ -76,11 +76,17 @@
 	console.log(tRemain)
 
 // add data to table field
-
-	$("#trainSchedule > tbody").append("<tr><td>" + tName + "</td><td>" + tDestination + "</td><td>" +
-  tNext + "</td><td>" + tFrequency +  "</td><td>" + tRemain +"</td></tr>");
-
+	
+	$('#trainSchedule > tbody').append(
+		"<tr>" + 
+			"<td>" + tName + 
+			"<td>" + tDestination + 
+			"<td>" + tFrequency + 
+			"<td>" + tNext + 
+			"<td>" + tRemain
+	);
 	// $("#trainSchedule > tbody").append("<tr><td>" + tName + "</td><td>" + tDestination + "</td><td>" +
- //  tTime + "</td><td>" + tNext + "</td><td>" + tRemain + "</td></tr>");
+ //  tNext + "</td><td>" + tFrequency +  "</td><td>" + tRemain +"</td></tr>");
 
+	
 	});
